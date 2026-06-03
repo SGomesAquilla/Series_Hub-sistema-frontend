@@ -29,6 +29,8 @@ Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend (Fas
 
 ## 🚀 Como Executar o Projeto
 
+(Você pode visualizar a página clicando em *🎬 Series Hub*, o título no topo desse README)
+
 ### Pré-requisitos
 
 * Node.js instalado
