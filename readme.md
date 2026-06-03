@@ -1,4 +1,4 @@
-# 🎬 SeriesHub
+# [🎬 SeriesHub](https://sgomesaquilla.github.io/Series_Hub-sistema-frontend)
 
 Sistema web desenvolvido em React para gerenciamento de séries, permitindo cadastrar, listar, editar e excluir séries assistidas.
 
