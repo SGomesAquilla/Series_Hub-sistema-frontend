@@ -13,24 +13,26 @@ export interface Serie {
 
 interface SerieFormProps {
   onAdicionarSerie: (serie: Serie) => void;
+  serieInicial?: Serie;
 }
 
 export default function SerieForm({
   onAdicionarSerie,
+  serieInicial,
 }: SerieFormProps) {
-  const [titulo, setTitulo] = useState('');
-  const [temporadas, setTemporadas] = useState(1);
-  const [dataLancamento, setDataLancamento] = useState('');
-  const [diretor, setDiretor] = useState('');
-  const [produtora, setProdutora] = useState('');
-  const [categoria, setCategoria] = useState('');
-  const [dataAssistida, setDataAssistida] = useState('');
+  const [titulo, setTitulo] = useState(serieInicial?.titulo ?? '');
+  const [temporadas, setTemporadas] = useState(serieInicial?.temporadas ?? 1);
+  const [dataLancamento, setDataLancamento] = useState(serieInicial?.dataAssistida ?? '');
+  const [diretor, setDiretor] = useState(serieInicial?.diretor ?? '');
+  const [produtora, setProdutora] = useState(serieInicial?.produtora ?? '');
+  const [categoria, setCategoria] = useState(serieInicial?.categoria ?? '');
+  const [dataAssistida, setDataAssistida] = useState(serieInicial?.dataAssistida ?? '');
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
     onAdicionarSerie({
-      id: Date.now(),
+      id: serieInicial?.id ?? Date.now(),
       titulo,
       temporadas,
       dataLancamento,
