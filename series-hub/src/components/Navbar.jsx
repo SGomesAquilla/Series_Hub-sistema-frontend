@@ -1,6 +1,17 @@
 import { NavLink } from 'react-router-dom';
+import { useRef } from 'react';
 
 function Navbar() {
+    const navRef = useRef(null);
+
+    function fecharMenu() {
+        const toggler = document.querySelector('.navbar-toggler');
+        const menu = document.getElementById('navbarNav');
+        if (menu && menu.classList.contains('show')) {
+            toggler.click();
+        }
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
@@ -21,13 +32,14 @@ function Navbar() {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">
+                    <ul className="navbar-nav ms-auto text-end">
                         <li className="nav-item">
                             <NavLink
                                 className={({ isActive }) =>
                                 isActive ? 'nav-link active fw-semibold' : 'nav-link'
                                 }
                                 to="/"
+                                onClick={fecharMenu}
                             >
                                 Home
                             </NavLink>
@@ -38,6 +50,7 @@ function Navbar() {
                                 isActive ? 'nav-link active fw-semibold' : 'nav-link'
                                 }
                                 to="/series"
+                                onClick={fecharMenu}
                             >
                                 Séries
                             </NavLink>
@@ -48,6 +61,7 @@ function Navbar() {
                                 isActive ? 'nav-link active fw-semibold' : 'nav-link'
                                 }
                                 to="/sobre"
+                                onClick={fecharMenu}
                             >
                                 Sobre
                             </NavLink>
