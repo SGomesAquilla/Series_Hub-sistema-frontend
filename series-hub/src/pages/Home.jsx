@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
     return (
-        <div className="py-5">
+        <div className="py-5 ms-3">
             <div className="row align-items-center g-5">
 
                 <div className="col-lg-6">
@@ -13,7 +13,7 @@ function Home() {
                         Seu diário pessoal de séries. Registre, organize e acompanhe
                         tudo o que você já assistiu em um só lugar.
                     </p>
-                    <div className="d-flex gap-3 mt-4">
+                    <div className="d-flex gap-3 mt-5">
                         <Link to="/series" className="btn btn-dark btn-lg">
                             Ver Séries
                         </Link>
