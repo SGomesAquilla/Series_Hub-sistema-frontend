@@ -16,7 +16,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
                 <NavLink className="navbar-brand fw-bold" to="/">
-                    📺 SerieJournal
+                    📺 Series Hub
                 </NavLink>
 
                 <button
