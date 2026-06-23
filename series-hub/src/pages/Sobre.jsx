@@ -12,6 +12,10 @@ function Sobre() {
                             SerieJournal é uma aplicação web de gerenciamento de séries
                             desenvolvida como projeto acadêmico da PUCRS. Permite cadastrar,
                             visualizar, editar e excluir registros de séries assistidas.
+
+                            Ela funciona consumindo uma API externa chamada serieJournal-api em:
+                            https://github.com/adsPucrsOnline/DesenvolvimentoFrontend/ (branch main).
+
                         </p>
                     </div>
                 </div>
@@ -49,4 +53,4 @@ function Sobre() {
     );
 }
 
-export default Sobre.jsx;
+export default Sobre;
