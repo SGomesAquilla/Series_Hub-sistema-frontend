@@ -128,6 +128,31 @@ function Formulario() {
                 />
               </div>
 
+              {/* URL da Imagem */}
+              <div className="mb-3">
+                <label htmlFor="imagemUrl" className="form-label fw-semibold">
+                  URL da Imagem <span className="text-muted fw-normal">(opcional)</span>
+                </label>
+                <input
+                  type="url"
+                  id="imagemUrl"
+                  name="imagemUrl"
+                  className="form-control"
+                  value={form.imagemUrl || ''}
+                  onChange={handleChange}
+                  placeholder="Ex: https://upload.wikimedia.org/..."
+                />
+                {form.imagemUrl && (
+                  <img
+                    src={form.imagemUrl}
+                    alt="Preview"
+                    className="mt-2 rounded"
+                    style={{ height: '120px', objectFit: 'cover' }}
+                    onError={(e) => (e.target.style.display = 'none')}
+                  />
+                )}
+              </div>
+
               <div className="row g-3">
                 {/* Número de Temporadas */}
                 <div className="col-md-6">
