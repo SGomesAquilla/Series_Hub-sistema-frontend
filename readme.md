@@ -1,8 +1,10 @@
 # [🎬 SeriesHub](https://sgomesaquilla.github.io/Series_Hub-sistema-frontend)
 
+## Nome: `Áquilla Siqueira Gomes`
+
 Sistema web desenvolvido em React para gerenciamento de séries, permitindo cadastrar, listar, editar e excluir séries assistidas.
 
-Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend (Fase 1).
+Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend.
 
 ---
 
@@ -13,7 +15,7 @@ Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend (Fas
 * Edição de séries existentes
 * Exclusão de séries
 * Navegação entre páginas utilizando React Router
-* Persistência local utilizando Local Storage
+* Persistência de dados
 * Interface baseada em componentes React
 
 ---
@@ -21,15 +23,13 @@ Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend (Fas
 ## 🛠️ Tecnologias Utilizadas
 
 * React
-* TypeScript
+* Bootstrap
 * Vite
 * React Router DOM
 
 ---
 
 ## 🚀 Como Executar o Projeto
-
-(Você pode visualizar a página clicando em [*🎬 Series Hub*](https://sgomesaquilla.github.io/Series_Hub-sistema-frontend), o título no topo desse README)
 
 ### Pré-requisitos
 
@@ -40,7 +40,11 @@ Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend (Fas
 
 Clone o repositório ou extraia o arquivo compactado do projeto.
 
-Instale as dependências:
+Dentro da pasta series-Hub, instale as dependências:
+
+```bash
+cd series-hub
+```
 
 ```bash
 npm install
@@ -62,7 +66,7 @@ http://localhost:5173
 
 ## 🧪 Testes
 
-Nesta fase do projeto não foram implementados testes automatizados.
+
 
 ---
 
@@ -115,48 +119,49 @@ Funcionalidades:
 ```txt
 src
 │
-├── components
-│   ├── NavBar
-│   ├── SerieForm
-│   └── SerieList
+├── api
+│   └── api.js
 │
-├── data
-│   └── mockSeries
+├── components
+│   ├── Navbar.jsx
+│   └── SerieCard.jsx
 │
 ├── pages
-│   ├── Home
-│   ├── Cadastro
-│   ├── Series
-│   └── Editar
+│   ├── Formulario.jsx
+│   ├── Home.jsx
+│   ├── Listagem.jsx
+│   └── Sobre.jsx
 │
-├── routes
-│   └── AppRoutes
+├── tests
+│   ├── Navbar.test.jsx
+│   └── SerieCard.test.jsx
 │
-├── App.tsx
-└── main.tsx
+├── App.jsx
+└── main.jsx
 ```
 
 ---
 
-## 💾 Persistência dos Dados
+## Telas
 
-Para a Fase 1 foi utilizada a API Local Storage do navegador para armazenar os dados cadastrados.
+Segue abaixo imagens das telas do app na versao desktop e mobile.
 
-Essa abordagem permite:
+### Home
 
-* Manter os dados após atualizar a página;
-* Simular persistência sem necessidade de backend;
-* Atender aos requisitos de CRUD estático da etapa atual do projeto.
+![/home](./imgs/Home.png)
+![/home](./imgs/Home_mobile.png)
 
----
+### Series
 
-## 📌 Decisões de Desenvolvimento
+![/series](./imgs/Series.png)
+![/series](./imgs/Series_mobile.png)
 
-Durante o desenvolvimento foram tomadas as seguintes decisões:
+### Sobre
 
-* Utilização do Vite para inicialização do projeto;
-* Utilização de TypeScript para maior segurança e organização do código;
-* Utilização do React Router DOM para estruturação da navegação entre páginas;
-* Reutilização do componente SerieForm para cadastro e edição;
-* Utilização de Local Storage para persistência local dos dados;
-* Manutenção de dados iniciais através de um arquivo mockSeries para facilitar demonstrações e testes.
+![/sobre](./imgs/Sobre.png)
+![/sobre](./imgs/Sobre_mobile.png)
+
+### Cadastrar/Editar
+
+![/cadastrar](./imgs/Cadastrar.png)
+![/editar](./imgs/Editar.png)
