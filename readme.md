@@ -4,7 +4,7 @@
 
 Sistema web desenvolvido em React para gerenciamento de séries, permitindo cadastrar, listar, editar e excluir séries assistidas.
 
-Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend.
+Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend, e consome a API **serieJournal-api**, disponibilizada pela PUCRS no repositório [DesenvolvimentoFrontend](https://github.com/adsPucrsOnline/DesenvolvimentoFrontend/) (branch `main`). O projeto foi desenvolvido para ser usado em conjunto com essa API — sem ela rodando, as páginas que dependem de dados (Home, Listagem, Formulário) não conseguem carregar ou salvar séries.
 
 ---
 
@@ -26,6 +26,7 @@ Este projeto foi desenvolvido como parte da disciplina de Sistemas Frontend.
 * Bootstrap
 * Vite
 * React Router DOM
+* Axios
 
 ---
 
@@ -50,44 +51,15 @@ cd series-hub
 npm install
 ```
 
-### Executando o Projeto
+### Executando a API (serieJournal-api)
 
-```bash
-npm run dev
-```
+O frontend depende da API rodando localmente para funcionar de fato. Em um terminal separado:
 
-Após iniciar o servidor, acesse:
-
-```txt
-http://localhost:5173
-```
-
----
-
-## 🧪 Testes
-
-O projeto conta com testes unitários para os principais componentes, escritos com **Jest** e **React Testing Library**. Os testes garantem que a interface renderiza corretamente os dados e que as interações do usuário (como cliques em botões) funcionam como esperado.
-
-### O que é testado
-
-**`Navbar.test.jsx`**
-* Renderização do logo "SerieJournal"
-* Renderização dos links de navegação (Home, Séries, Sobre)
-* Verificação se os links apontam para as rotas corretas (`/`, `/series`, `/sobre`)
-
-**`SerieCard.test.jsx`**
-* Renderização correta dos dados da série (título, diretor, produtora, categoria)
-* Renderização dos botões de ação (Editar e Excluir)
-* Chamada da função `onDelete` com o `id` correto ao clicar em "Excluir"
-
-### Pré-requisito: API serieJournal-api
-
-Para que o projeto funcione plenamente — incluindo o consumo de dados real durante a execução dos testes e do app — é necessário que ele se comunique com a API **serieJournal-api**, disponibilizada pela PUCRS no repositório [DesenvolvimentoFrontend](https://github.com/adsPucrsOnline/DesenvolvimentoFrontend/) (branch `main`).
-
-**Para executar a API:**
-
-1. Clone o repositório localmente
-2. No mesmo terminal, entre na pasta da API:
+1. Clone o repositório da API:
+   ```bash
+   git clone https://github.com/adsPucrsOnline/DesenvolvimentoFrontend.git
+   ```
+2. Entre na pasta da API:
    ```bash
    cd ./DesenvolvimentoFrontend/serieJournal-api/
    ```
@@ -106,6 +78,53 @@ Para que o projeto funcione plenamente — incluindo o consumo de dados real dur
 | POST | `http://localhost:5000/series` | Cadastra uma nova série |
 | PUT | `http://localhost:5000/series` | Atualiza os dados de uma série |
 | DELETE | `http://localhost:5000/series/:id` | Remove uma série por id |
+
+### Executando o Frontend
+
+```bash
+npm run dev
+```
+
+Após iniciar o servidor, acesse:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+## 🧪 Testes
+
+O projeto conta com testes automatizados escritos com **Jest** e **React Testing Library**. As chamadas de rede são sempre mockadas (via `jest.mock('../api/api')`), por isso **os testes não dependem da API serieJournal-api estar rodando** — eles validam a lógica e a renderização dos componentes de forma isolada e determinística.
+
+### O que é testado
+
+**`Navbar.test.jsx`** — componente
+* Renderização da marca "Series Hub"
+* Renderização dos links de navegação (Home, Séries, Sobre)
+* Verificação se os links apontam para as rotas corretas (`/`, `/series`, `/sobre`)
+
+**`SerieCard.test.jsx`** — componente
+* Renderização correta dos dados da série (título, diretor, produtora, categoria)
+* Renderização dos botões de ação (Editar e Excluir)
+* Chamada da função `onDelete` com o `id` correto ao clicar em "Excluir"
+
+**`Sobre.test.jsx`** — componente
+* Renderização do título e dos textos principais da página informativa
+
+**`Formulario.test.jsx`** — componente
+* Renderização dos campos obrigatórios em modo de criação
+* Envio do formulário chamando `api.post` com os dados corretos
+* Carregamento dos dados existentes via `api.get` em modo de edição
+* Exibição de mensagem de erro quando a API falha ao salvar
+
+**`Listagem.integration.test.jsx`** — integração
+* Testa `Listagem` e `SerieCard` trabalhando juntos (sem mocks entre eles), mockando apenas a API
+* Exibição do estado de carregamento e renderização das séries retornadas
+* Exibição de mensagem de erro quando a API falha ao carregar
+* Exibição do estado vazio quando não há séries cadastradas
+* Exclusão de uma série real da lista ao clicar em "Excluir" e confirmar
+* Manutenção da série na lista ao cancelar a confirmação de exclusão
 
 ### Como executar os testes
 
@@ -189,7 +208,10 @@ src
 │
 ├── tests
 │   ├── Navbar.test.jsx
-│   └── SerieCard.test.jsx
+│   ├── SerieCard.test.jsx
+│   ├── Sobre.test.jsx
+│   ├── Formulario.test.jsx
+│   └── Listagem.integration.test.jsx
 │
 ├── App.jsx
 └── main.jsx
