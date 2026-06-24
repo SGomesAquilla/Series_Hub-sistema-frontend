@@ -66,7 +66,62 @@ http://localhost:5173
 
 ## 🧪 Testes
 
+O projeto conta com testes unitários para os principais componentes, escritos com **Jest** e **React Testing Library**. Os testes garantem que a interface renderiza corretamente os dados e que as interações do usuário (como cliques em botões) funcionam como esperado.
 
+### O que é testado
+
+**`Navbar.test.jsx`**
+* Renderização do logo "SerieJournal"
+* Renderização dos links de navegação (Home, Séries, Sobre)
+* Verificação se os links apontam para as rotas corretas (`/`, `/series`, `/sobre`)
+
+**`SerieCard.test.jsx`**
+* Renderização correta dos dados da série (título, diretor, produtora, categoria)
+* Renderização dos botões de ação (Editar e Excluir)
+* Chamada da função `onDelete` com o `id` correto ao clicar em "Excluir"
+
+### Pré-requisito: API serieJournal-api
+
+Para que o projeto funcione plenamente — incluindo o consumo de dados real durante a execução dos testes e do app — é necessário que ele se comunique com a API **serieJournal-api**, disponibilizada pela PUCRS no repositório [DesenvolvimentoFrontend](https://github.com/adsPucrsOnline/DesenvolvimentoFrontend/) (branch `main`).
+
+**Para executar a API:**
+
+1. Clone o repositório localmente
+2. No mesmo terminal, entre na pasta da API:
+   ```bash
+   cd ./DesenvolvimentoFrontend/serieJournal-api/
+   ```
+3. Instale as dependências e inicie o servidor:
+   ```bash
+   npm install
+   npm start
+   ```
+
+**Rotas disponíveis na API:**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `http://localhost:5000/series` | Devolve uma lista de séries |
+| GET | `http://localhost:5000/series/:id` | Devolve uma série por id |
+| POST | `http://localhost:5000/series` | Cadastra uma nova série |
+| PUT | `http://localhost:5000/series` | Atualiza os dados de uma série |
+| DELETE | `http://localhost:5000/series/:id` | Remove uma série por id |
+
+### Como executar os testes
+
+Dentro da pasta do projeto, execute:
+
+```bash
+npm test
+```
+
+Para executar os testes em modo de observação (re-executando automaticamente a cada alteração de código):
+
+```bash
+npx jest --watch
+```
+
+> Os arquivos de teste estão localizados na pasta `src/tests`, seguindo o padrão de nomenclatura `*.test.jsx`.
 
 ---
 

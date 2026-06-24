@@ -10,9 +10,9 @@ describe('Navbar', () => {
       </MemoryRouter>
     );
 
-  test('renderiza o logo SerieJournal', () => {
+  test('renderiza o logo Series Hub', () => {
     renderNavbar();
-    expect(screen.getByText(/SerieJournal/i)).toBeInTheDocument();
+    expect(screen.getByText(/Series Hub/i)).toBeInTheDocument();
   });
 
   test('renderiza os links de navegação', () => {
